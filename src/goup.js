@@ -1,13 +1,13 @@
 /*
  *
- * Copyright (c) 2016 Daniele Lenares (https://github.com/Ryuk87)
+ * Copyright (c) 2016-2017 Daniele Lenares (https://github.com/Ryuk87)
  * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
  * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
  *
- * Version 1.0.0-dev
+ * Version 0.0.5
  *
  */
-var goupJs = (function goupJs(userParams) {
+var GoUpJS = (function GoUpJS(userParams) {
 	'use strict';
 
 
@@ -156,14 +156,19 @@ var goupJs = (function goupJs(userParams) {
         container.style.height = params.containerSize + 'px';
         container.style.background = params.containerColor;
         container.style.cursor = 'pointer';
-        //container.style.display = 'none';
         container.style.zIndex = params.zIndex;
         container.style.bottom = params.bottomOffset + 'px';
         container.style[params.location] = params.locationOffset + 'px';
         container.style.borderRadius = params.containerRadius + 'px';
 
         // Apply style to arrow
-
+        arrow.style.width = 0 + 'px';
+        arrow.style.height = 0 + 'px';
+        arrow.style.borderStyle = 'solid';
+        arrow.style.borderWidth = '0px 10px 10px';
+        arrow.style.borderColor = 'transparent transparent' + params.arrowColor;
+        arrow.style.margin = '0px auto';
+        arrow.style.paddingTop = '13px';
     }
 
 
@@ -180,7 +185,7 @@ var goupJs = (function goupJs(userParams) {
 
 
     // Wait for the document to be ready. Then call 'boot' function.
-    if (document.readyState != 'loading') {
+    if (document.readyState !== 'loading') {
         boot();
     } else {
         document.addEventListener('DOMContentLoaded', boot);
