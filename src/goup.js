@@ -4,18 +4,17 @@
  * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
  * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
  *
- * Version 0.0.5
+ * Version 0.0.1
  *
  */
 var GoUpJS = (function GoUpJS(userParams) {
 	'use strict';
 
-
     /**
-     * Merge the user parameters with the default ones
-     * 
-     * @param  {Object}
-     * @return {Object}
+     * Merge the user parameters with the default ones,
+     *
+     * @param userParams
+     * @returns {*}
      */
     function mergeParameters(userParams) {
 
@@ -37,8 +36,6 @@ var GoUpJS = (function GoUpJS(userParams) {
             arrowClass: userParams.arrowClass || 'goup-arrow',
             alwaysVisible: userParams.alwaysVisible || false,
             trigger: userParams.trigger || 500,
-            entryAnimation: userParams.entryAnimtion || 'fade',
-            goupSpeed: userParams.goupSpeed || 'slow',
             hideUnderWidth: userParams.hideUnderWidth || 500,
             containerColor: userParams.containerColor || '#000',
             arrowColor: userParams.arrowColor || '#ffffff',
@@ -51,12 +48,11 @@ var GoUpJS = (function GoUpJS(userParams) {
         return mergedParams;
     }
 
-
     /**
-     * Validate parameters
-     * 
-     * @param  {Object}
-     * @return {Object}
+     * Validate parameters.
+     *
+     * @param mergedParams
+     * @returns {{}}
      */
     function checkParameters(mergedParams) {
 
@@ -132,11 +128,11 @@ var GoUpJS = (function GoUpJS(userParams) {
         return params;
     }
 
-
     /**
-     * Create all the needed html elements based on the passed parameters
-     * 
-     * @param  {Object}
+     * Create all the needed html elements based on the passed parameters.
+     *
+     * @param params
+     * @returns {Element}
      */
     function createElements(params) {
         // Create the container div
@@ -156,10 +152,12 @@ var GoUpJS = (function GoUpJS(userParams) {
         container.style.height = params.containerSize + 'px';
         container.style.background = params.containerColor;
         container.style.cursor = 'pointer';
+        container.style.display = 'none';
         container.style.zIndex = params.zIndex;
         container.style.bottom = params.bottomOffset + 'px';
         container.style[params.location] = params.locationOffset + 'px';
         container.style.borderRadius = params.containerRadius + 'px';
+
 
         // Apply style to arrow
         arrow.style.width = 0 + 'px';
@@ -169,18 +167,43 @@ var GoUpJS = (function GoUpJS(userParams) {
         arrow.style.borderColor = 'transparent transparent' + params.arrowColor;
         arrow.style.margin = '0px auto';
         arrow.style.paddingTop = '13px';
+
+        return container;
     }
 
+    /**
+     * Events listeners.
+     *
+     * @param container
+     * @param params
+     */
+    function bindEvents(container, params) {
+
+        // Listen on document "scroll" event
+        document.addEventListener('scroll', function scrollListener() {
+            var body = document.getElementsByTagName('body')[0];
+            if (body.scrollTop >= params.trigger) {
+                container.style.display = 'block';
+            } else {
+                container.style.display = 'none';
+            }
+        });
+
+        // Listen on container "click" event
+        container.addEventListener('click', function clickListener() {
+            window.scrollTo(0, 0);
+        });
+    }
 
     /**
-     * Call the functions needed for the script to run
-     * 
+     * Call the functions needed for the script to run.
      */
     function boot() {
         var mergedParams = mergeParameters(userParams);
         if (mergedParams === false) return;
         var params = checkParameters(mergedParams);
-        createElements(params);
+        var container = createElements(params);
+        bindEvents(container, params);
     }
 
 
@@ -190,6 +213,5 @@ var GoUpJS = (function GoUpJS(userParams) {
     } else {
         document.addEventListener('DOMContentLoaded', boot);
     }
-
 
 });
