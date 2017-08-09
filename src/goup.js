@@ -34,6 +34,7 @@ var GoUpJS = (function GoUpJS(userParams) {
             containerRadius: userParams.containerRadius || 10,
             containerClass: userParams.containerClass || 'goup-container',
             arrowClass: userParams.arrowClass || 'goup-arrow',
+            arrowSize: userParams.arrowSize || 10,
             alwaysVisible: userParams.alwaysVisible || false,
             trigger: userParams.trigger || 500,
             hideUnderWidth: userParams.hideUnderWidth || 500,
@@ -84,6 +85,11 @@ var GoUpJS = (function GoUpJS(userParams) {
                     if (params.containerSize < 20) {
                         params.containerSize = 20;
                     }             
+                    break;
+                case 'arrowSize':
+                    if (params.arrowSize < 0) {
+                        params.arrowSize = 0;
+                    }
                     break;
                 case 'containerRadius':
                     if (params.containerRadius < 0) {
@@ -152,21 +158,26 @@ var GoUpJS = (function GoUpJS(userParams) {
         container.style.height = params.containerSize + 'px';
         container.style.background = params.containerColor;
         container.style.cursor = 'pointer';
-        container.style.display = 'none';
         container.style.zIndex = params.zIndex;
         container.style.bottom = params.bottomOffset + 'px';
         container.style[params.location] = params.locationOffset + 'px';
         container.style.borderRadius = params.containerRadius + 'px';
+        if (params.alwaysVisible === false) {
+            container.style.display = 'none';
+        } else {
+            container.style.display = 'block';
+        }
 
 
         // Apply style to arrow
-        arrow.style.width = 0 + 'px';
-        arrow.style.height = 0 + 'px';
+        arrow.style.width = 0;
+        arrow.style.height = 0;
+        arrow.style.margin = '0 auto';
+        // Half container size minus half arrow size
+        arrow.style.paddingTop = Math.ceil(params.containerSize * 0.5 - params.arrowSize * 0.5) + 'px';
         arrow.style.borderStyle = 'solid';
-        arrow.style.borderWidth = '0px 10px 10px';
-        arrow.style.borderColor = 'transparent transparent' + params.arrowColor;
-        arrow.style.margin = '0px auto';
-        arrow.style.paddingTop = '13px';
+        arrow.style.borderWidth = '0 ' + params.arrowSize + 'px ' + params.arrowSize + 'px ' + params.arrowSize + 'px';
+        arrow.style.borderColor = 'transparent transparent ' + params.arrowColor + ' transparent';
 
         return container;
     }
