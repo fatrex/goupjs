@@ -13,6 +13,6 @@ https://github.com/dnlnrs/jquery-goup
 ----
 
 ### License and Copyright
-GoUp JS is dual licensed under the [GPL](http://www.gnu.org/licenses/gpl.html) and [MIT](http://www.opensource.org/licenses/mit-license.php) licenses.
+GoUp JS is licensed under the [GPL](http://www.gnu.org/licenses/gpl.html) license.
 
 &copy; 2016-2017 Daniele Lenares
