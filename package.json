@@ -1,0 +1,19 @@
+{
+  "name": "goupjs",
+  "version": "0.0.1",
+  "description": "A simple JavaScript plugin that let users go back to the top of a web page.",
+  "main": "src/goup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dnlnrs/goupjs.git"
+  },
+  "author": "Daniele Lenares <daniele.lenares@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dnlnrs/goupjs/issues"
+  },
+  "homepage": "https://github.com/dnlnrs/goupjs#readme"
+}
