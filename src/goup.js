@@ -193,7 +193,7 @@ var GoUpJS = (function GoUpJS(userParams) {
         // Listen on document "scroll" event
         document.addEventListener('scroll', function scrollListener() {
             var body = document.getElementsByTagName('body')[0];
-            if (body.scrollTop >= params.trigger) {
+            if (body.scrollTop >= params.trigger || params.alwaysVisible === true) {
                 container.style.display = 'block';
             } else {
                 container.style.display = 'none';
