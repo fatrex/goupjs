@@ -3,7 +3,7 @@
  * Copyright (c) 2016-2017 Daniele Lenares (https://github.com/Ryuk87)
  * Licensed under GPL (http://www.opensource.org/licenses/gpl-license.php).
  *
- * Version 0.0.1
+ * Version 0.0.2
  *
  */
 var GoUpJS = (function GoUpJS(userParams) {
