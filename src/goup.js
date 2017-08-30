@@ -40,9 +40,6 @@ var GoUpJS = (function GoUpJS(userParams) {
             hideUnderWidth: userParams.hideUnderWidth || 500,
             containerColor: userParams.containerColor || '#000',
             arrowColor: userParams.arrowColor || '#ffffff',
-            title: userParams.title || '',
-            titleAsText: userParams.titleAsText || false,
-            titleAsTextClass: userParams.titleAsTextClass || 'goup-text',
             zIndex: userParams.zIndex || 1
         };
 
@@ -114,11 +111,6 @@ var GoUpJS = (function GoUpJS(userParams) {
                 case 'arrowColor':
                     if (!checkColor.test(params.arrowColor)) {
                         params.arrowColor = '#fff';
-                    }
-                    break;
-                case 'title':
-                    if (params.title === '') {
-                        params.titleAsText = false;
                     }
                     break;
                 case 'zIndex':
