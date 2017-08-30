@@ -1,8 +1,7 @@
 /*
  *
  * Copyright (c) 2016-2017 Daniele Lenares (https://github.com/Ryuk87)
- * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
- * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
+ * Licensed under GPL (http://www.opensource.org/licenses/gpl-license.php).
  *
  * Version 0.0.1
  *
