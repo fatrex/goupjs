@@ -1,6 +1,6 @@
 /*
  *
- * Copyright (c) 2016-2017 Daniele Lenares (https://github.com/Ryuk87)
+ * Copyright (c) 2016-2017 Daniele Lenares (https://github.com/dnlnrs)
  * Licensed under GPL (http://www.opensource.org/licenses/gpl-license.php).
  *
  * Version 0.0.2
@@ -158,7 +158,6 @@ var GoUpJS = (function GoUpJS(userParams) {
         } else {
             container.style.display = 'block';
         }
-
 
         // Apply style to arrow
         arrow.style.width = 0;
